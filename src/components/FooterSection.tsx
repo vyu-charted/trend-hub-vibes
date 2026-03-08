@@ -1,15 +1,15 @@
-import { TrendingUp } from "lucide-react";
+import { Leaf } from "lucide-react";
 
 const FooterSection = () => {
   return (
-    <footer className="relative border-t border-foreground/10">
-      <div className="absolute inset-0 mesh-gradient opacity-30" />
+    <footer className="relative border-t border-border">
+      <div className="absolute inset-0 organic-gradient opacity-30" />
       <div className="container mx-auto px-4 py-12 relative">
         <div className="grid md:grid-cols-4 gap-8">
           <div className="md:col-span-2">
             <div className="flex items-center gap-2.5 font-heading font-bold text-xl mb-4">
-              <div className="bg-gradient-to-br from-primary to-secondary rounded-xl p-2">
-                <TrendingUp className="h-5 w-5 text-primary-foreground" />
+              <div className="bg-primary rounded-2xl p-2">
+                <Leaf className="h-5 w-5 text-primary-foreground" />
               </div>
               FinPulse
             </div>
@@ -35,9 +35,9 @@ const FooterSection = () => {
             </ul>
           </div>
         </div>
-        <div className="border-t border-foreground/10 mt-8 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
+        <div className="border-t border-border mt-8 pt-8 flex flex-col md:flex-row items-center justify-between gap-4">
           <span className="text-muted-foreground text-sm">© 2026 FinPulse. Not financial advice.</span>
-          <button className="glass-btn text-sm py-2">Join Free</button>
+          <button className="organic-btn text-sm py-2">Join Free</button>
         </div>
       </div>
     </footer>
