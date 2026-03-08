@@ -9,10 +9,10 @@ const events = [
 
 const EventsSection = () => {
   return (
-    <section id="events" className="relative bg-secondary/30">
+    <section id="events" className="relative bg-muted/40">
       <div className="container mx-auto px-4 py-20">
         <div className="flex items-center justify-between mb-10">
-          <h2 className="text-3xl md:text-4xl font-heading font-light">Events</h2>
+          <h2 className="text-3xl md:text-4xl font-heading font-bold">Events</h2>
           <button className="luxury-tag cursor-pointer flex items-center gap-1">
             <Calendar className="h-3 w-3" /> Calendar
           </button>
@@ -20,7 +20,7 @@ const EventsSection = () => {
 
         <div className="gold-line-left mb-10" />
 
-        <div className="grid md:grid-cols-3 gap-px bg-border/50">
+        <div className="grid md:grid-cols-3 gap-4">
           {events.map((event, i) => (
             <motion.div
               key={event.id}
@@ -28,12 +28,12 @@ const EventsSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1, duration: 0.5 }}
-              className="bg-background p-8 flex flex-col group hover:bg-secondary/30 transition-colors duration-300"
+              className="rounded-lg bg-card border border-border/60 p-6 flex flex-col group hover:shadow-[var(--shadow-float)] transition-all duration-300"
             >
               <span className="luxury-tag text-xs mb-5 self-start">{event.type}</span>
-              <h3 className="font-heading font-light text-lg md:text-xl mb-8 leading-snug flex-1 group-hover:text-primary transition-colors duration-300">{event.title}</h3>
+              <h3 className="font-heading font-semibold text-lg md:text-xl mb-8 leading-snug flex-1 group-hover:text-primary transition-colors duration-300">{event.title}</h3>
 
-              <div className="space-y-2.5 text-sm text-muted-foreground border-t border-border pt-5">
+              <div className="space-y-2.5 text-sm text-muted-foreground border-t border-border/60 pt-5">
                 <div className="flex items-center gap-2">
                   <Calendar className="h-4 w-4 text-primary/60" /> {event.date}
                 </div>
