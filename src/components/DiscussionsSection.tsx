@@ -16,7 +16,7 @@ const DiscussionsSection = () => {
           <h2 className="text-3xl md:text-4xl font-bold">
             Trending Threads
           </h2>
-          <button className="glass-tag bg-foreground/5 border border-foreground/10 text-muted-foreground cursor-pointer flex items-center gap-1 hover:text-foreground hover:border-foreground/20 transition-all">
+          <button className="organic-tag bg-muted text-muted-foreground cursor-pointer flex items-center gap-1 hover:text-foreground hover:bg-primary/10 transition-all">
             View All <ArrowUpRight className="h-3 w-3" />
           </button>
         </div>
@@ -28,11 +28,11 @@ const DiscussionsSection = () => {
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="glass-card p-4 md:p-5 flex items-center justify-between gap-4 cursor-pointer group"
+              transition={{ delay: i * 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
+              className="organic-card p-4 md:p-5 flex items-center justify-between gap-4 cursor-pointer group"
             >
               <div className="flex items-center gap-4 flex-1 min-w-0">
-                <div className="bg-gradient-to-br from-primary/20 to-secondary/20 rounded-xl p-2.5 shrink-0 border border-primary/10">
+                <div className="bg-primary/10 rounded-2xl p-2.5 shrink-0">
                   <MessageSquare className="h-5 w-5 text-primary" />
                 </div>
                 <div className="min-w-0">
@@ -43,11 +43,11 @@ const DiscussionsSection = () => {
                       </span>
                     )}
                     {thread.hot && (
-                      <span className="flex items-center gap-1 text-accent text-xs font-medium">
+                      <span className="flex items-center gap-1 text-secondary text-xs font-medium">
                         <Flame className="h-3 w-3" /> Hot
                       </span>
                     )}
-                    <span className="glass-tag bg-foreground/5 text-muted-foreground text-xs border border-foreground/10">{thread.category}</span>
+                    <span className="organic-tag bg-muted text-muted-foreground text-xs">{thread.category}</span>
                   </div>
                   <h3 className="font-heading font-semibold text-base md:text-lg group-hover:text-primary transition-colors truncate">
                     {thread.title}
