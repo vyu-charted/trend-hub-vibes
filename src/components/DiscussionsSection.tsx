@@ -10,46 +10,44 @@ const threads = [
 
 const DiscussionsSection = () => {
   return (
-    <section id="discussions" className="relative">
-      <div className="container mx-auto px-4 py-20">
-        <div className="flex items-center justify-between mb-10">
-          <h2 className="text-2xl md:text-3xl font-bold tracking-wider">
-            <span className="text-secondary">//</span> Active Threads
-          </h2>
-          <button className="cyber-tag bg-muted text-muted-foreground border border-border cursor-pointer flex items-center gap-1 hover:text-primary hover:border-primary/50 transition-all">
+    <section id="discussions" className="relative bg-muted/30">
+      <div className="container mx-auto px-4 py-16">
+        <div className="flex items-center justify-between mb-8">
+          <h2 className="text-2xl md:text-3xl font-heading font-bold">Letters & Discussions</h2>
+          <button className="editorial-tag cursor-pointer flex items-center gap-1 hover:border-foreground hover:text-foreground transition-all">
             View All <ArrowUpRight className="h-3 w-3" />
           </button>
         </div>
 
-        <div className="grid gap-3">
+        <hr className="rule-accent mb-8" />
+
+        <div className="space-y-0">
           {threads.map((thread, i) => (
             <motion.div
               key={thread.id}
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -15 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.1 }}
-              className="cyber-card p-4 md:p-5 flex items-center justify-between gap-4 cursor-pointer group"
+              transition={{ delay: i * 0.08 }}
+              className="py-4 border-b border-border flex items-center justify-between gap-4 cursor-pointer group"
             >
-              <div className="flex items-center gap-4 flex-1 min-w-0">
-                <div className="bg-primary/10 border border-primary/30 rounded-sm p-2.5 shrink-0">
-                  <MessageSquare className="h-5 w-5 text-primary" />
-                </div>
+              <div className="flex items-start gap-4 flex-1 min-w-0">
+                <MessageSquare className="h-5 w-5 text-muted-foreground mt-0.5 shrink-0" />
                 <div className="min-w-0">
                   <div className="flex flex-wrap items-center gap-2 mb-1">
                     {thread.pinned && (
-                      <span className="flex items-center gap-1 text-accent text-xs font-heading font-bold uppercase tracking-wider">
+                      <span className="flex items-center gap-1 text-foreground text-xs font-mono font-semibold uppercase tracking-[0.15em]">
                         <Pin className="h-3 w-3" /> Pinned
                       </span>
                     )}
                     {thread.hot && (
-                      <span className="flex items-center gap-1 text-secondary text-xs font-heading font-bold uppercase tracking-wider">
+                      <span className="flex items-center gap-1 text-accent text-xs font-mono font-semibold uppercase tracking-[0.15em]">
                         <Flame className="h-3 w-3" /> Hot
                       </span>
                     )}
-                    <span className="cyber-tag bg-muted text-muted-foreground text-xs border border-border">{thread.category}</span>
+                    <span className="editorial-tag text-xs">{thread.category}</span>
                   </div>
-                  <h3 className="font-heading font-semibold text-sm md:text-base group-hover:text-primary transition-colors truncate tracking-wide">
+                  <h3 className="font-heading font-semibold text-sm md:text-base group-hover:text-accent transition-colors">
                     {thread.title}
                   </h3>
                 </div>
@@ -57,11 +55,11 @@ const DiscussionsSection = () => {
 
               <div className="hidden md:flex items-center gap-6 shrink-0 text-muted-foreground font-mono text-sm">
                 <div className="text-center">
-                  <div className="font-bold text-foreground">{thread.replies}</div>
+                  <div className="font-semibold text-foreground">{thread.replies}</div>
                   <div className="text-xs">replies</div>
                 </div>
                 <div className="text-center">
-                  <div className="font-bold text-foreground">{thread.views}</div>
+                  <div className="font-semibold text-foreground">{thread.views}</div>
                   <div className="text-xs">views</div>
                 </div>
                 <div className="flex items-center gap-1 text-xs">
@@ -69,7 +67,7 @@ const DiscussionsSection = () => {
                 </div>
               </div>
 
-              <ArrowUpRight className="h-5 w-5 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity text-primary" />
+              <ArrowUpRight className="h-4 w-4 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity text-accent" />
             </motion.div>
           ))}
         </div>
