@@ -10,13 +10,13 @@ const threads = [
 
 const DiscussionsSection = () => {
   return (
-    <section id="discussions">
-      <div className="container mx-auto px-4 py-16">
-        <div className="flex items-center justify-between mb-8">
-          <h2 className="text-3xl md:text-4xl font-bold text-foreground">
+    <section id="discussions" className="relative">
+      <div className="container mx-auto px-4 py-20">
+        <div className="flex items-center justify-between mb-10">
+          <h2 className="text-3xl md:text-4xl font-bold">
             Trending Threads
           </h2>
-          <button className="soft-tag bg-card border border-border text-muted-foreground cursor-pointer flex items-center gap-1 hover:text-primary transition-colors">
+          <button className="glass-tag bg-foreground/5 border border-foreground/10 text-muted-foreground cursor-pointer flex items-center gap-1 hover:text-foreground hover:border-foreground/20 transition-all">
             View All <ArrowUpRight className="h-3 w-3" />
           </button>
         </div>
@@ -29,10 +29,10 @@ const DiscussionsSection = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
-              className="soft-card p-4 md:p-5 flex items-center justify-between gap-4 cursor-pointer group"
+              className="glass-card p-4 md:p-5 flex items-center justify-between gap-4 cursor-pointer group"
             >
               <div className="flex items-center gap-4 flex-1 min-w-0">
-                <div className="bg-primary/10 rounded-lg p-2.5 shrink-0">
+                <div className="bg-gradient-to-br from-primary/20 to-secondary/20 rounded-xl p-2.5 shrink-0 border border-primary/10">
                   <MessageSquare className="h-5 w-5 text-primary" />
                 </div>
                 <div className="min-w-0">
@@ -47,9 +47,9 @@ const DiscussionsSection = () => {
                         <Flame className="h-3 w-3" /> Hot
                       </span>
                     )}
-                    <span className="soft-tag bg-muted text-muted-foreground text-xs">{thread.category}</span>
+                    <span className="glass-tag bg-foreground/5 text-muted-foreground text-xs border border-foreground/10">{thread.category}</span>
                   </div>
-                  <h3 className="font-heading font-semibold text-base md:text-lg group-hover:text-primary transition-colors truncate text-foreground">
+                  <h3 className="font-heading font-semibold text-base md:text-lg group-hover:text-primary transition-colors truncate">
                     {thread.title}
                   </h3>
                 </div>
