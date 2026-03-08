@@ -1,4 +1,4 @@
-import { Zap, Menu, X } from "lucide-react";
+import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -7,54 +7,58 @@ const Navbar = () => {
   const links = ["Feed", "Discussions", "Members", "Events"];
 
   return (
-    <nav className="fixed top-4 left-1/2 -translate-x-1/2 z-50 w-[calc(100%-2rem)] max-w-5xl">
-      <div className="cyber-card-static px-4 py-3 flex items-center justify-between bg-card/90 backdrop-blur-lg">
-        <a href="/" className="flex items-center gap-2.5 font-heading font-bold text-sm tracking-widest">
-          <div className="bg-primary rounded-sm p-2 shadow-[0_0_15px_hsl(170_100%_50%/0.4)]">
-            <Zap className="h-4 w-4 text-primary-foreground" />
+    <nav className="sticky top-0 z-50 bg-background/95 backdrop-blur-sm border-b border-border">
+      <div className="container mx-auto px-4">
+        {/* Top masthead */}
+        <div className="flex items-center justify-between py-3">
+          <a href="/" className="font-heading text-2xl md:text-3xl font-bold tracking-tight text-foreground">
+            FinPulse
+          </a>
+          <div className="hidden md:flex items-center gap-2">
+            <span className="dateline">Est. 2026</span>
+            <span className="text-muted-foreground mx-2">·</span>
+            <span className="dateline">Your Daily Market Brief</span>
           </div>
-          <span className="text-primary">FINPULSE</span>
-        </a>
+          <div className="hidden md:flex items-center gap-3">
+            <button className="editorial-btn-outline text-xs py-2 px-4">Log In</button>
+            <button className="editorial-btn text-xs py-2 px-4">Subscribe</button>
+          </div>
+          <button className="md:hidden p-2 hover:bg-muted transition-colors" onClick={() => setMenuOpen(!menuOpen)}>
+            {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
+          </button>
+        </div>
 
-        <div className="hidden md:flex items-center gap-1">
+        {/* Navigation links */}
+        <div className="hidden md:flex items-center gap-1 border-t border-border py-2">
           {links.map((link) => (
             <a
               key={link}
               href={`#${link.toLowerCase()}`}
-              className="text-xs font-heading font-medium px-4 py-2 rounded-sm text-muted-foreground hover:text-primary hover:bg-primary/5 transition-all uppercase tracking-wider"
+              className="text-sm font-mono font-medium px-4 py-1.5 text-muted-foreground hover:text-foreground transition-colors uppercase tracking-[0.15em]"
             >
               {link}
             </a>
           ))}
         </div>
-
-        <div className="hidden md:flex items-center gap-3">
-          <button className="cyber-btn-secondary text-xs py-2 px-4">Log In</button>
-          <button className="cyber-btn text-xs py-2 px-4">Jack In</button>
-        </div>
-
-        <button className="md:hidden rounded-sm p-2 hover:bg-primary/10 transition-colors text-primary" onClick={() => setMenuOpen(!menuOpen)}>
-          {menuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
-        </button>
       </div>
 
       <AnimatePresence>
         {menuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -8 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -8 }}
-            className="md:hidden cyber-card-static mt-2 overflow-hidden"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: "auto" }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden overflow-hidden border-t border-border"
           >
-            <div className="p-4 flex flex-col gap-1">
+            <div className="container mx-auto px-4 py-4 flex flex-col gap-1">
               {links.map((link) => (
-                <a key={link} href={`#${link.toLowerCase()}`} className="text-sm font-heading font-medium py-2.5 px-3 rounded-sm hover:bg-primary/10 hover:text-primary transition-colors uppercase tracking-wider">
+                <a key={link} href={`#${link.toLowerCase()}`} className="text-sm font-mono py-2.5 px-3 hover:bg-muted transition-colors uppercase tracking-[0.15em]">
                   {link}
                 </a>
               ))}
-              <div className="flex gap-2 mt-3">
-                <button className="cyber-btn-secondary text-xs py-2 px-4 flex-1">Log In</button>
-                <button className="cyber-btn text-xs py-2 px-4 flex-1">Jack In</button>
+              <div className="flex gap-2 mt-3 pt-3 border-t border-border">
+                <button className="editorial-btn-outline text-xs py-2 px-4 flex-1">Log In</button>
+                <button className="editorial-btn text-xs py-2 px-4 flex-1">Subscribe</button>
               </div>
             </div>
           </motion.div>
