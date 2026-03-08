@@ -14,8 +14,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ["'Playfair Display'", "Georgia", "serif"],
-        body: ["'Source Serif 4'", "Georgia", "serif"],
+        heading: ["'Cormorant Garamond'", "Georgia", "serif"],
+        body: ["'Inter'", "-apple-system", "sans-serif"],
         mono: ["'JetBrains Mono'", "monospace"],
       },
       colors: {
@@ -59,6 +59,10 @@ export default {
         warning: {
           DEFAULT: "hsl(var(--warning))",
           foreground: "hsl(var(--warning-foreground))",
+        },
+        gold: {
+          DEFAULT: "hsl(var(--gold))",
+          muted: "hsl(var(--gold-muted))",
         },
         sidebar: {
           DEFAULT: "hsl(var(--sidebar-background))",

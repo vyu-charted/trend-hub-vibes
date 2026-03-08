@@ -3,76 +3,67 @@ import { ArrowRight, Users, MessageSquare, TrendingUp } from "lucide-react";
 
 const HeroSection = () => {
   const stats = [
-    { label: "Readers", value: "12,847", icon: Users },
+    { label: "Members", value: "12,847", icon: Users },
     { label: "Discussions", value: "4,200+", icon: MessageSquare },
-    { label: "Online Now", value: "3,100", icon: TrendingUp },
+    { label: "Live Now", value: "3,100", icon: TrendingUp },
   ];
 
   return (
-    <section className="relative">
-      <div className="container mx-auto px-4 py-16 md:py-24">
-        <hr className="rule-thick mb-8" />
+    <section className="relative overflow-hidden">
+      {/* Subtle gold gradient orb */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
 
-        <div className="grid md:grid-cols-3 gap-8 md:gap-12">
-          {/* Lead story */}
+      <div className="container mx-auto px-4 py-24 md:py-36 relative">
+        <div className="max-w-3xl mx-auto text-center">
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5 }}
-            className="md:col-span-2"
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <span className="section-label mb-4 block">Breaking</span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-              The Financial Network,{" "}
-              <em className="font-normal">Reimagined.</em>
+            <span className="section-label mb-6 block">The Financial Network</span>
+            <h1 className="text-5xl md:text-6xl lg:text-7xl font-light mb-8 leading-[1.05]">
+              Where Markets{" "}
+              <em className="text-primary font-normal italic">Meet Minds</em>
             </h1>
-            <p className="text-lg text-muted-foreground max-w-xl mb-8 leading-relaxed drop-cap">
-              Join a community of 12,847 traders and investors sharing real-time market analysis, 
-              trading signals, and financial intelligence. The smartest conversation in finance 
-              happens here — every single day.
+            <p className="text-muted-foreground text-base md:text-lg max-w-xl mx-auto mb-10 leading-relaxed font-light">
+              A curated community of 12,847 traders and investors sharing real-time 
+              analysis, signals, and financial intelligence.
             </p>
-            <div className="flex flex-wrap gap-3">
-              <button className="editorial-btn flex items-center gap-2">
-                Subscribe Free <ArrowRight className="h-4 w-4" />
+            <div className="flex flex-wrap justify-center gap-4">
+              <button className="luxury-btn flex items-center gap-3">
+                Join Now <ArrowRight className="h-3.5 w-3.5" />
               </button>
-              <button className="editorial-btn-outline flex items-center gap-2">
-                Browse Feed
+              <button className="luxury-btn-outline flex items-center gap-3">
+                Explore
               </button>
             </div>
           </motion.div>
+        </div>
 
-          {/* Sidebar stats */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="border-l border-border pl-6 md:pl-8 space-y-6"
-          >
-            <span className="section-label block">By the Numbers</span>
+        {/* Stats bar */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="mt-20 md:mt-28"
+        >
+          <div className="gold-line mb-10" />
+          <div className="grid grid-cols-3 gap-8 max-w-2xl mx-auto">
             {stats.map((stat, i) => (
               <motion.div
                 key={stat.label}
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
-                transition={{ delay: 0.4 + i * 0.15 }}
-                className="pb-5 border-b border-border last:border-b-0"
+                transition={{ delay: 0.5 + i * 0.15 }}
+                className="text-center"
               >
-                <div className="text-3xl md:text-4xl font-heading font-bold mb-1">{stat.value}</div>
+                <div className="text-3xl md:text-4xl font-heading font-light text-foreground mb-1">{stat.value}</div>
                 <div className="dateline">{stat.label}</div>
               </motion.div>
             ))}
-
-            <div className="flex items-center gap-2 pt-2">
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-success opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-success"></span>
-              </span>
-              <span className="dateline text-success">847 readers online</span>
-            </div>
-          </motion.div>
-        </div>
-
-        <hr className="rule-thick mt-12" />
+          </div>
+          <div className="gold-line mt-10" />
+        </motion.div>
       </div>
     </section>
   );

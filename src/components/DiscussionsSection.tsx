@@ -10,64 +10,64 @@ const threads = [
 
 const DiscussionsSection = () => {
   return (
-    <section id="discussions" className="relative bg-muted/30">
-      <div className="container mx-auto px-4 py-16">
-        <div className="flex items-center justify-between mb-8">
-          <h2 className="text-2xl md:text-3xl font-heading font-bold">Letters & Discussions</h2>
-          <button className="editorial-tag cursor-pointer flex items-center gap-1 hover:border-foreground hover:text-foreground transition-all">
+    <section id="discussions" className="relative bg-secondary/30">
+      <div className="container mx-auto px-4 py-20">
+        <div className="flex items-center justify-between mb-10">
+          <h2 className="text-3xl md:text-4xl font-heading font-light">Discussions</h2>
+          <button className="luxury-tag cursor-pointer flex items-center gap-1">
             View All <ArrowUpRight className="h-3 w-3" />
           </button>
         </div>
 
-        <hr className="rule-accent mb-8" />
+        <div className="gold-line-left mb-10" />
 
         <div className="space-y-0">
           {threads.map((thread, i) => (
             <motion.div
               key={thread.id}
-              initial={{ opacity: 0, x: -15 }}
+              initial={{ opacity: 0, x: -10 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: i * 0.08 }}
-              className="py-4 border-b border-border flex items-center justify-between gap-4 cursor-pointer group"
+              transition={{ delay: i * 0.08, duration: 0.4 }}
+              className="py-5 border-b border-border flex items-center justify-between gap-4 cursor-pointer group"
             >
               <div className="flex items-start gap-4 flex-1 min-w-0">
-                <MessageSquare className="h-5 w-5 text-muted-foreground mt-0.5 shrink-0" />
+                <MessageSquare className="h-4 w-4 text-muted-foreground mt-1 shrink-0" />
                 <div className="min-w-0">
-                  <div className="flex flex-wrap items-center gap-2 mb-1">
+                  <div className="flex flex-wrap items-center gap-2 mb-1.5">
                     {thread.pinned && (
-                      <span className="flex items-center gap-1 text-foreground text-xs font-mono font-semibold uppercase tracking-[0.15em]">
+                      <span className="flex items-center gap-1 text-primary text-xs uppercase tracking-[0.2em] font-medium">
                         <Pin className="h-3 w-3" /> Pinned
                       </span>
                     )}
                     {thread.hot && (
-                      <span className="flex items-center gap-1 text-accent text-xs font-mono font-semibold uppercase tracking-[0.15em]">
+                      <span className="flex items-center gap-1 text-primary text-xs uppercase tracking-[0.2em] font-medium">
                         <Flame className="h-3 w-3" /> Hot
                       </span>
                     )}
-                    <span className="editorial-tag text-xs">{thread.category}</span>
+                    <span className="luxury-tag text-xs">{thread.category}</span>
                   </div>
-                  <h3 className="font-heading font-semibold text-sm md:text-base group-hover:text-accent transition-colors">
+                  <h3 className="font-heading font-normal text-base md:text-lg group-hover:text-primary transition-colors duration-300">
                     {thread.title}
                   </h3>
                 </div>
               </div>
 
-              <div className="hidden md:flex items-center gap-6 shrink-0 text-muted-foreground font-mono text-sm">
+              <div className="hidden md:flex items-center gap-8 shrink-0 text-muted-foreground text-sm">
                 <div className="text-center">
-                  <div className="font-semibold text-foreground">{thread.replies}</div>
-                  <div className="text-xs">replies</div>
+                  <div className="font-medium text-foreground">{thread.replies}</div>
+                  <div className="dateline text-xs">replies</div>
                 </div>
                 <div className="text-center">
-                  <div className="font-semibold text-foreground">{thread.views}</div>
-                  <div className="text-xs">views</div>
+                  <div className="font-medium text-foreground">{thread.views}</div>
+                  <div className="dateline text-xs">views</div>
                 </div>
-                <div className="flex items-center gap-1 text-xs">
+                <div className="flex items-center gap-1 dateline text-xs">
                   <Clock className="h-3 w-3" /> {thread.lastActive}
                 </div>
               </div>
 
-              <ArrowUpRight className="h-4 w-4 shrink-0 opacity-0 group-hover:opacity-100 transition-opacity text-accent" />
+              <ArrowUpRight className="h-4 w-4 shrink-0 opacity-0 group-hover:opacity-100 transition-all duration-300 text-primary" />
             </motion.div>
           ))}
         </div>
