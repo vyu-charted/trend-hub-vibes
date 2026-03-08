@@ -14,8 +14,9 @@ export default {
     },
     extend: {
       fontFamily: {
-        heading: ["'Fraunces'", "serif"],
-        body: ["'Nunito'", "sans-serif"],
+        heading: ["'Orbitron'", "sans-serif"],
+        body: ["'Rajdhani'", "sans-serif"],
+        mono: ["'Share Tech Mono'", "monospace"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -84,15 +85,28 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        "sway": {
-          "0%, 100%": { transform: "rotate(-1deg)" },
-          "50%": { transform: "rotate(1deg)" },
+        "flicker": {
+          "0%, 100%": { opacity: "1" },
+          "50%": { opacity: "0.8" },
+        },
+        "glitch": {
+          "0%, 100%": { transform: "translate(0)" },
+          "20%": { transform: "translate(-2px, 1px)" },
+          "40%": { transform: "translate(2px, -1px)" },
+          "60%": { transform: "translate(-1px, -1px)" },
+          "80%": { transform: "translate(1px, 2px)" },
+        },
+        "scanline": {
+          "0%": { transform: "translateY(-100%)" },
+          "100%": { transform: "translateY(100vh)" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "sway": "sway 8s ease-in-out infinite",
+        "flicker": "flicker 3s ease-in-out infinite",
+        "glitch": "glitch 0.3s ease-in-out",
+        "scanline": "scanline 8s linear infinite",
       },
     },
   },
