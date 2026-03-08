@@ -10,10 +10,10 @@ const threads = [
 
 const DiscussionsSection = () => {
   return (
-    <section id="discussions" className="relative bg-secondary/30">
+    <section id="discussions" className="relative bg-muted/40">
       <div className="container mx-auto px-4 py-20">
         <div className="flex items-center justify-between mb-10">
-          <h2 className="text-3xl md:text-4xl font-heading font-light">Discussions</h2>
+          <h2 className="text-3xl md:text-4xl font-heading font-bold">Discussions</h2>
           <button className="luxury-tag cursor-pointer flex items-center gap-1">
             View All <ArrowUpRight className="h-3 w-3" />
           </button>
@@ -21,7 +21,7 @@ const DiscussionsSection = () => {
 
         <div className="gold-line-left mb-10" />
 
-        <div className="space-y-0">
+        <div className="space-y-3">
           {threads.map((thread, i) => (
             <motion.div
               key={thread.id}
@@ -29,25 +29,27 @@ const DiscussionsSection = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08, duration: 0.4 }}
-              className="py-5 border-b border-border flex items-center justify-between gap-4 cursor-pointer group"
+              className="p-5 rounded-lg bg-card border border-border/60 flex items-center justify-between gap-4 cursor-pointer group hover:shadow-[var(--shadow-soft)] transition-all duration-300"
             >
               <div className="flex items-start gap-4 flex-1 min-w-0">
-                <MessageSquare className="h-4 w-4 text-muted-foreground mt-1 shrink-0" />
+                <div className="h-9 w-9 rounded-full bg-primary/10 flex items-center justify-center shrink-0">
+                  <MessageSquare className="h-4 w-4 text-primary" />
+                </div>
                 <div className="min-w-0">
                   <div className="flex flex-wrap items-center gap-2 mb-1.5">
                     {thread.pinned && (
-                      <span className="flex items-center gap-1 text-primary text-xs uppercase tracking-[0.2em] font-medium">
+                      <span className="flex items-center gap-1 text-primary text-xs font-semibold font-heading">
                         <Pin className="h-3 w-3" /> Pinned
                       </span>
                     )}
                     {thread.hot && (
-                      <span className="flex items-center gap-1 text-primary text-xs uppercase tracking-[0.2em] font-medium">
+                      <span className="flex items-center gap-1 text-secondary-foreground text-xs font-semibold font-heading">
                         <Flame className="h-3 w-3" /> Hot
                       </span>
                     )}
                     <span className="luxury-tag text-xs">{thread.category}</span>
                   </div>
-                  <h3 className="font-heading font-normal text-base md:text-lg group-hover:text-primary transition-colors duration-300">
+                  <h3 className="font-heading font-semibold text-base md:text-lg group-hover:text-primary transition-colors duration-300">
                     {thread.title}
                   </h3>
                 </div>
@@ -55,11 +57,11 @@ const DiscussionsSection = () => {
 
               <div className="hidden md:flex items-center gap-8 shrink-0 text-muted-foreground text-sm">
                 <div className="text-center">
-                  <div className="font-medium text-foreground">{thread.replies}</div>
+                  <div className="font-semibold text-foreground">{thread.replies}</div>
                   <div className="dateline text-xs">replies</div>
                 </div>
                 <div className="text-center">
-                  <div className="font-medium text-foreground">{thread.views}</div>
+                  <div className="font-semibold text-foreground">{thread.views}</div>
                   <div className="dateline text-xs">views</div>
                 </div>
                 <div className="flex items-center gap-1 dateline text-xs">
