@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;1,9..40,300;1,9..40,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&family=IBM+Plex+Mono:ital,wght@0,300;0,400;0,500;0,600;1,400&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,61 +6,55 @@
 
 @layer base {
   :root {
-    --background: 270 30% 97%;
-    --foreground: 270 30% 15%;
+    --background: 120 5% 3%;
+    --foreground: 120 80% 65%;
 
-    --card: 0 0% 100%;
-    --card-foreground: 270 30% 15%;
+    --card: 120 5% 5%;
+    --card-foreground: 120 80% 65%;
 
-    --popover: 0 0% 100%;
-    --popover-foreground: 270 30% 15%;
+    --popover: 120 5% 5%;
+    --popover-foreground: 120 80% 65%;
 
-    --primary: 270 60% 65%;
-    --primary-foreground: 0 0% 100%;
+    --primary: 120 100% 50%;
+    --primary-foreground: 120 5% 3%;
 
-    --secondary: 340 50% 88%;
-    --secondary-foreground: 340 40% 35%;
+    --secondary: 120 5% 10%;
+    --secondary-foreground: 120 60% 55%;
 
-    --muted: 270 20% 93%;
-    --muted-foreground: 270 15% 50%;
+    --muted: 120 5% 8%;
+    --muted-foreground: 120 30% 40%;
 
-    --accent: 170 45% 72%;
-    --accent-foreground: 170 40% 20%;
+    --accent: 120 100% 50%;
+    --accent-foreground: 120 5% 3%;
 
-    --destructive: 0 55% 60%;
+    --destructive: 0 100% 50%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 270 20% 88%;
-    --input: 270 20% 90%;
-    --ring: 270 60% 65%;
+    --border: 120 40% 15%;
+    --input: 120 10% 10%;
+    --ring: 120 100% 50%;
 
-    --radius: 16px;
+    --radius: 0px;
 
-    --sidebar-background: 270 25% 95%;
-    --sidebar-foreground: 270 30% 15%;
-    --sidebar-primary: 270 60% 65%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 270 20% 90%;
-    --sidebar-accent-foreground: 270 30% 15%;
-    --sidebar-border: 270 20% 88%;
-    --sidebar-ring: 270 60% 65%;
+    --sidebar-background: 120 5% 4%;
+    --sidebar-foreground: 120 80% 65%;
+    --sidebar-primary: 120 100% 50%;
+    --sidebar-primary-foreground: 120 5% 3%;
+    --sidebar-accent: 120 5% 8%;
+    --sidebar-accent-foreground: 120 80% 65%;
+    --sidebar-border: 120 40% 15%;
+    --sidebar-ring: 120 100% 50%;
 
-    --success: 155 50% 55%;
-    --success-foreground: 0 0% 100%;
-    --warning: 40 85% 60%;
-    --warning-foreground: 40 50% 15%;
+    --success: 120 100% 50%;
+    --success-foreground: 120 5% 3%;
+    --warning: 45 100% 50%;
+    --warning-foreground: 0 0% 0%;
 
-    --font-heading: 'Quicksand', 'Trebuchet MS', sans-serif;
-    --font-body: 'DM Sans', -apple-system, sans-serif;
+    --font-heading: 'Fira Code', 'Courier New', monospace;
+    --font-body: 'IBM Plex Mono', 'Courier New', monospace;
 
-    --gold: 270 60% 65%;
-    --gold-muted: 270 30% 75%;
-
-    --gradient-dreamy: linear-gradient(135deg, hsl(270 60% 92%), hsl(340 50% 92%), hsl(30 60% 92%));
-    --gradient-card: linear-gradient(145deg, hsl(0 0% 100%), hsl(270 30% 98%));
-    --gradient-accent: linear-gradient(135deg, hsl(270 60% 65%), hsl(340 50% 65%));
-    --shadow-soft: 0 4px 24px -4px hsl(270 40% 70% / 0.2);
-    --shadow-float: 0 8px 40px -8px hsl(270 40% 60% / 0.15);
+    --gold: 120 100% 50%;
+    --gold-muted: 120 40% 25%;
   }
 }
 
@@ -73,111 +67,133 @@
     @apply bg-background text-foreground antialiased;
     font-family: var(--font-body);
     font-weight: 400;
-    font-size: 15px;
-    line-height: 1.7;
-    letter-spacing: 0.01em;
+    font-size: 14px;
+    line-height: 1.6;
+    letter-spacing: 0.02em;
   }
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--font-heading);
-    line-height: 1.15;
-    letter-spacing: -0.01em;
-    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0em;
+    font-weight: 700;
+  }
+
+  /* Scanline overlay */
+  body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 9999;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      hsl(120 100% 50% / 0.015) 2px,
+      hsl(120 100% 50% / 0.015) 4px
+    );
+  }
+
+  /* Text glow effect */
+  ::selection {
+    background: hsl(120 100% 50% / 0.3);
+    color: hsl(120 100% 80%);
   }
 }
 
 @layer components {
-  /* Dreamy card — soft glass with pastel border */
+  /* Terminal card */
   .luxury-card {
-    background: var(--gradient-card);
+    background: hsl(var(--card));
     border: 1px solid hsl(var(--border));
-    border-radius: var(--radius);
-    box-shadow: var(--shadow-soft);
-    transition: all 0.4s ease;
+    transition: border-color 0.2s ease;
   }
 
   .luxury-card:hover {
-    box-shadow: var(--shadow-float);
-    transform: translateY(-2px);
+    border-color: hsl(var(--primary) / 0.5);
+    box-shadow: 0 0 10px hsl(var(--primary) / 0.1);
   }
 
-  /* Dreamy line accent */
+  /* Terminal line */
   .gold-line {
-    height: 2px;
-    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.4), hsl(var(--secondary) / 0.4), transparent);
-    border-radius: 1px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(var(--primary) / 0.5), transparent);
   }
 
   .gold-line-left {
-    height: 2px;
-    background: linear-gradient(90deg, hsl(var(--primary) / 0.5), hsl(var(--secondary) / 0.3), transparent 70%);
-    border-radius: 1px;
+    height: 1px;
+    background: linear-gradient(90deg, hsl(var(--primary) / 0.7), transparent 70%);
   }
 
-  /* Section label */
+  /* Section label — terminal style */
   .section-label {
-    @apply inline-block text-xs font-semibold uppercase;
+    @apply inline-block text-xs font-bold uppercase;
     letter-spacing: 0.2em;
     font-family: var(--font-heading);
     color: hsl(var(--primary));
+    text-shadow: 0 0 8px hsl(var(--primary) / 0.5);
   }
 
-  /* Dreamy tag — pill shaped */
+  /* Terminal tag */
   .luxury-tag {
-    @apply inline-flex items-center px-3 py-1 text-xs font-medium;
-    letter-spacing: 0.05em;
+    @apply inline-flex items-center px-2 py-0.5 text-xs uppercase font-medium;
+    letter-spacing: 0.1em;
     font-family: var(--font-heading);
-    border-radius: 999px;
-    background: hsl(var(--primary) / 0.1);
-    border: 1px solid hsl(var(--primary) / 0.2);
-    color: hsl(var(--primary));
-    transition: all 0.3s ease;
+    border: 1px solid hsl(var(--border));
+    color: hsl(var(--muted-foreground));
+    transition: all 0.2s ease;
   }
 
   .luxury-tag:hover {
-    background: hsl(var(--primary) / 0.18);
-    border-color: hsl(var(--primary) / 0.4);
+    border-color: hsl(var(--primary) / 0.6);
+    color: hsl(var(--primary));
+    text-shadow: 0 0 6px hsl(var(--primary) / 0.4);
   }
 
-  /* Dreamy button — soft gradient */
+  /* Terminal button */
   .luxury-btn {
-    @apply px-8 py-3 text-xs uppercase font-semibold;
+    @apply px-6 py-2.5 text-xs uppercase font-bold;
     letter-spacing: 0.15em;
     font-family: var(--font-heading);
-    background: var(--gradient-accent);
-    color: hsl(0 0% 100%);
-    border: none;
-    border-radius: 999px;
-    box-shadow: 0 4px 16px -4px hsl(var(--primary) / 0.4);
-    transition: all 0.4s ease;
+    background: hsl(var(--primary));
+    color: hsl(var(--background));
+    border: 1px solid hsl(var(--primary));
+    transition: all 0.2s ease;
+    text-shadow: none;
   }
 
   .luxury-btn:hover {
-    box-shadow: 0 6px 24px -4px hsl(var(--primary) / 0.5);
-    transform: translateY(-1px);
+    background: transparent;
+    color: hsl(var(--primary));
+    text-shadow: 0 0 8px hsl(var(--primary) / 0.6);
+    box-shadow: 0 0 15px hsl(var(--primary) / 0.2), inset 0 0 15px hsl(var(--primary) / 0.05);
   }
 
   .luxury-btn-outline {
-    @apply px-8 py-3 text-xs uppercase font-semibold;
+    @apply px-6 py-2.5 text-xs uppercase font-bold;
     letter-spacing: 0.15em;
     font-family: var(--font-heading);
     background: transparent;
     color: hsl(var(--primary));
-    border: 2px solid hsl(var(--primary) / 0.3);
-    border-radius: 999px;
-    transition: all 0.4s ease;
+    border: 1px solid hsl(var(--border));
+    transition: all 0.2s ease;
   }
 
   .luxury-btn-outline:hover {
-    background: hsl(var(--primary) / 0.08);
-    border-color: hsl(var(--primary) / 0.6);
+    border-color: hsl(var(--primary));
+    box-shadow: 0 0 10px hsl(var(--primary) / 0.15);
+    text-shadow: 0 0 6px hsl(var(--primary) / 0.4);
   }
 
   /* Dateline */
   .dateline {
-    @apply text-xs;
-    letter-spacing: 0.05em;
-    font-family: var(--font-body);
+    @apply text-xs uppercase;
+    letter-spacing: 0.1em;
+    font-family: var(--font-heading);
     font-weight: 400;
     color: hsl(var(--muted-foreground));
   }
@@ -185,8 +201,27 @@
   /* Byline */
   .byline {
     @apply text-sm;
-    font-family: var(--font-heading);
-    font-weight: 500;
+    font-family: var(--font-body);
+    font-weight: 400;
     color: hsl(var(--muted-foreground));
+  }
+
+  /* Blinking cursor */
+  @keyframes blink {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0; }
+  }
+
+  .cursor-blink::after {
+    content: '█';
+    animation: blink 1s step-end infinite;
+    color: hsl(var(--primary));
+  }
+
+  /* Terminal prompt */
+  .terminal-prompt::before {
+    content: '> ';
+    color: hsl(var(--primary));
+    font-weight: 700;
   }
 }
